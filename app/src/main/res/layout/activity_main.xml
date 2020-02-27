@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.003" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -35,7 +35,7 @@
         android:textColor="@color/grey"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/registrar"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.957" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -52,8 +52,9 @@
         android:text="Registrar."
         android:textColor="@color/red"
         android:textSize="15sp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/nuevo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957" />
 
@@ -68,7 +69,7 @@
         android:text="¡Qué bueno que estás de regreso!"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/nuevo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,18 +77,18 @@
         app:layout_constraintVertical_bias="0.001" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginButton"
         android:layout_width="143dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button"
-        android:text="Login"
+        android:text="Ingresar"
         android:textColor="@color/white"
         android:textSize="23dp"
         android:fontFamily="@font/bold"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/nuevo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
