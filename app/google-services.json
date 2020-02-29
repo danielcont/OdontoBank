@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "983592816553",
+    "firebase_url": "https://odontobank.firebaseio.com",
+    "project_id": "odontobank",
+    "storage_bucket": "odontobank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983592816553:android:d2fb1930d9968e68bffeb8",
+        "android_client_info": {
+          "package_name": "com.example.odontobank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983592816553-iqu2s8sth74i329nevrsj3tio5nvkpol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.odontobank",
+            "certificate_hash": "cdf1cbe916b9c43a0b71f14b26d792aaab1d6054"
+          }
+        },
+        {
+          "client_id": "983592816553-47uuidbtdktnev0ba0nf9743b02s4a3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS7H_8zQBJJzlqeYkfy_2Lm1-_g7mIM6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983592816553-47uuidbtdktnev0ba0nf9743b02s4a3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
