@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         // Inicializar Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
-
         // Botón para Ingresar
         boton_login = findViewById(R.id.loginButton);
         boton_login.setOnClickListener(new View.OnClickListener() {

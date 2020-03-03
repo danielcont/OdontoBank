@@ -1,5 +1,6 @@
 package com.example.odontobank;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,20 +10,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private TextView editTextCorreo, editTextPassword;
 
     private ImageView back_button;
     private Button login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        editTextCorreo = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
 
         // Botón para registrar
         TextView nuevo = findViewById(R.id.registrar);
@@ -47,41 +60,53 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean input_validado = validar_correo();
-                if(input_validado == true) {
-                    login_bd();
-
-                }
+                validar_correo();
             }
         });
 
 
+
     }
 
-    public boolean validar_correo() {
-        boolean validado = false, correo_validado = false, password_validado = false;
+    public void validar_correo() {
+        boolean correo_validado = false, password_validado = false;
 
         TextView correo_text = (TextView)findViewById(R.id.correo_text);
-        EditText ValidateEmail = (EditText)findViewById(R.id.correo);
-        String email = ValidateEmail.getText().toString().trim();
+        TextView password_text = (TextView)findViewById(R.id.password_text);
+
+        String email = editTextCorreo.getText().toString();
         String patron = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        TextView password_text = (TextView)findViewById(R.id.password_text);
-        EditText validate_password =  (EditText)findViewById(R.id.password);
-        String password = validate_password.getText().toString();
-
+        String password = editTextPassword.getText().toString();
 
         if(email.matches(patron) && email.length() > 0) { correo_validado = true; correo_text.setVisibility(View.INVISIBLE); } else { correo_text.setVisibility(View.VISIBLE); }
 
         if(password.length() > 6) { password_validado = true; password_text.setVisibility(View.INVISIBLE); } else { password_text.setVisibility(View.VISIBLE); }
 
-        if((password_validado && correo_validado) == true) { validado = true; }
+        if((password_validado && correo_validado) == true) { login_bd(email, password); }
 
-        return validado;
     }
 
-    private void login_bd() {
+    public void login_bd(String email, String password) {
 
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    inicio();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Los datos ingresados son incorrectos",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    private void inicio() {
+        Intent intent = new Intent(this, Inicio.class);
+        startActivity(intent);
+        finish();
     }
 
 }
