@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name = "windowNoTitle">true</item>
         <item name = "windowActionBar">false</item>
+        <item name="android:statusBarColor">#00000000</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="actionBarItemBackground">@drawable/menu</item>
     </style>
 
 </resources>
