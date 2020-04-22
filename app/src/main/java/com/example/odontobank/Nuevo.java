@@ -103,6 +103,7 @@ public class Nuevo extends AppCompatActivity {
             datos.put("correo", email);
             datos.put("escuela", escuela);
             datos.put("nombre", nombre);
+            datos.put("imagenURL", "default");
 
             createAccount(email, password,datos);
         }

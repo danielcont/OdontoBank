@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name = "grey">#253A4B</color>
+    <color name="gradient_grey">#455e73</color>
     <color name = "lightGrey">#E8EBEC</color>>
     <color name = "red">#F23B5F</color>
     <color name = "white">#FFFFFF</color>
