@@ -11,6 +11,12 @@
         <item name="android:statusBarColor">#00000000</item>
     </style>
 
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/red</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
     <style name="ToolBarStyle" parent="Theme.AppCompat">
         <item name="actionBarItemBackground">@drawable/menu</item>
     </style>

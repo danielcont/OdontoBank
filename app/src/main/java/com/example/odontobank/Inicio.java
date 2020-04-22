@@ -2,6 +2,7 @@ package com.example.odontobank;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -9,6 +10,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -56,6 +59,8 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        navigationView.setCheckedItem(R.id.news_feed);
+
     }
 
     @Override
@@ -69,6 +74,55 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch(menuItem.getItemId()) {
+            case R.id.news_feed:
+
+                break;
+            case R.id.agregar:
+
+                break;
+            case R.id.profile:
+                Intent intent = new Intent(Inicio.this, Perfil.class);
+                startActivity(intent);
+                break;
+            case R.id.my_activities:
+
+                break;
+            case R.id.logout:
+                alerta();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void alerta() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialogTheme);
+        builder.setTitle("Cerrar Sesión");
+        builder.setMessage("¿Desea salir de esta cuenta?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                salir();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
+
+
+    private void salir() {
+        FirebaseAuth.getInstance().signOut();
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
 }
