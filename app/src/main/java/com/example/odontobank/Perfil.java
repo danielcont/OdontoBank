@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -31,12 +35,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
  public class Perfil extends AppCompatActivity {
 
      CircleImageView image_profile;
-     TextView username;
+     TextView username, correo, nombre, apellido, carrera, editar;
+     private ImageView back_button;
 
      FirebaseAuth mAuth;
      FirebaseUser fuser;
 
      StorageReference mStorageReference;
+     FirebaseFirestore  db = FirebaseFirestore.getInstance();
+     DocumentReference ref;
 
      private static final int TAKE_IMAGE_CODE = 10001;
 
@@ -51,20 +58,68 @@ import de.hdodenhof.circleimageview.CircleImageView;
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         image_profile = findViewById(R.id.foto);
-        username = findViewById(R.id.profile_id);
+        username = (TextView) findViewById(R.id.profile_id);
+        correo = (TextView) findViewById(R.id.pCorreo);
+        nombre = (TextView) findViewById(R.id.pNombre);
+        apellido = (TextView) findViewById(R.id.pApellido);
+        carrera = (TextView) findViewById(R.id.pCarrera);
+        editar = (TextView) findViewById(R.id.pEditar);
 
         fuser = mAuth.getCurrentUser();
 
-        if(fuser != null) {
-            if(fuser.getDisplayName() != null) {
-                username.setText(fuser.getEmail());
+        // Botón de regresar
+        back_button = findViewById(R.id.backButton);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
             }
+        });
+
+        // Botón de editar
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(Perfil.this, EditarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        if(fuser != null) {
             if(fuser.getPhotoUrl() != null) {
                 Glide.with(this)
                         .load(fuser.getPhotoUrl())
                         .into(image_profile);
             }
         }
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        ref = db.document("estudiantes/" + uid);
+
+        ref.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()) {
+                            String sCorreo = documentSnapshot.getString("correo");
+                            username.setText(sCorreo);
+
+                            correo.append(sCorreo);
+                            String sNombre = documentSnapshot.getString("nombre");
+                            nombre.append(sNombre);
+                            String sApellido = documentSnapshot.getString("apellido");
+                            apellido.append(sApellido);
+                            String sCarrera = documentSnapshot.getString("escuela");
+                            carrera.append(sCarrera);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
 
     }
 
