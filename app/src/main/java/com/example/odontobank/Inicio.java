@@ -80,7 +80,8 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
                 break;
             case R.id.agregar:
-
+                Intent intentPublicar = new Intent(Inicio.this, Publicar.class);
+                startActivity(intentPublicar);
                 break;
             case R.id.profile:
                 Intent intent = new Intent(Inicio.this, Perfil.class);
