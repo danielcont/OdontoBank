@@ -68,7 +68,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
         fuser = mAuth.getCurrentUser();
 
         // Botón de regresar
-        back_button = findViewById(R.id.backButton);
+        back_button = findViewById(R.id.pBackButton);
         back_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
