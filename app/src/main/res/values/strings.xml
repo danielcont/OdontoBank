@@ -3,4 +3,19 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="numbers">
+        <item>Seleccionar Opción</item>
+        <item>Cirugía Oral</item>
+        <item>Odontología Preventiva</item>
+        <item>Periodoncia</item>
+        <item>Terapéutica Dental</item>
+        <item>Endodoncia</item>
+        <item>Prótesis Dental</item>
+        <item>Odontología Infantil</item>
+        <item>Dolor Orofacial</item>
+        <item>Ortodoncia</item>
+        <item>Cariología</item>
+        <item>Implantología</item>
+    </string-array>
 </resources>

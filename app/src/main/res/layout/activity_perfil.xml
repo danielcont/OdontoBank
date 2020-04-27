@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/backButton"
+                android:id="@+id/pBackButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="32dp"
@@ -124,11 +124,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="293dp"
-        android:layout_margin="5dp">
+        android:layout_margin="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/profile_info_background">
 
             <TextView
                 android:layout_width="218dp"
@@ -148,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="105dp"
                 android:layout_marginEnd="26dp"
                 android:fontFamily="@font/regular"
@@ -162,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="135dp"
                 android:layout_marginEnd="55dp"
                 android:fontFamily="@font/regular"
@@ -176,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="165dp"
                 android:layout_marginEnd="55dp"
                 android:fontFamily="@font/regular"
@@ -190,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="195dp"
                 android:layout_marginEnd="55dp"
                 android:fontFamily="@font/regular"
@@ -206,7 +207,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="298dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="113dp"
+                android:layout_marginEnd="103dp"
                 app:srcCompat="@drawable/edit" />
 
             <TextView
@@ -216,8 +217,8 @@
                 android:layout_below="@+id/pCarrera"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="18dp"
-                android:layout_marginEnd="73dp"
-                android:fontFamily="@font/regular"
+                android:layout_marginEnd="63dp"
+                android:fontFamily="@font/bold"
                 android:text="Editar"
                 android:textColor="@color/red"
                 android:textSize="15dp" />

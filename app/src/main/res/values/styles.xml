@@ -21,4 +21,11 @@
         <item name="actionBarItemBackground">@drawable/menu</item>
     </style>
 
+    <style name="Spinner">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:fontFamily">@font/thin</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:backgroundTint">@color/lightGrey</item>
+    </style>
+
 </resources>
