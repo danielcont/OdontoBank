@@ -18,4 +18,17 @@
         <item>Cariología</item>
         <item>Implantología</item>
     </string-array>
+
+    <string-array name="carreras">
+        <item>Seleccionar Opción</item>
+        <item>Lic. Cirujano Dentista</item>
+        <item>Especialidad Endodoncia</item>
+        <item>Especialidad Cirugía Oral y Maxilofacial</item>
+        <item>Maestría Endodoncia</item>
+        <item>Maestría Periodoncia</item>
+        <item>Maestría Odontopediatría</item>
+        <item>Maestría en Ortodoncia</item>
+        <item>Maestría en Prostodoncia</item>
+        <item>Maestría en Odontología Avanzada</item>
+    </string-array>
 </resources>

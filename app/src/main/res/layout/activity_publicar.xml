@@ -179,6 +179,9 @@
                 android:layout_marginTop="304dp"
                 android:layout_toEndOf="@+id/textView12"
                 android:background="@drawable/input_phone"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="10"
                 android:hint="81-1316-9954" />
 
             <Button

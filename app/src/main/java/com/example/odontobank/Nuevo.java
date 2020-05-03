@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.app.ProgressDialog;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +27,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Nuevo extends AppCompatActivity {
+public class Nuevo extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private EditText editTextCorreo, editTextPassword, editTextNombre, editTextApellido, editTextEscuela;
-
+    private Spinner spinner_carreras;
     private ImageView back_button;
     private Button registrar_button;
 
@@ -63,18 +66,28 @@ public class Nuevo extends AppCompatActivity {
             }
         });
 
+        spinner_carreras = findViewById(R.id.spinner_carreras);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.carreras, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_carreras.setAdapter(adapter);
+        spinner_carreras.setOnItemSelectedListener(this);
+
+        int spinnerPosition = adapter.getPosition("Seleccionar Opción");
+        spinner_carreras.setSelection(spinnerPosition);
+
     }
 
     private void validar() {
         mAuth = FirebaseAuth.getInstance();
 
-        boolean correo_validado = false, password_validado = false, nombre_validado = false, apellido_validado = false, escuela_validado = false;
+        boolean correo_validado = false, password_validado = false, nombre_validado = false, apellido_validado = false, escuela_validado = false, spinner_validado = false;
 
         TextView correo_text = (TextView)findViewById(R.id.correo_text);
         TextView password_text = (TextView)findViewById(R.id.password_text);
         TextView nombre_text = (TextView)findViewById(R.id.nombre_text);
         TextView apellido_text = (TextView)findViewById(R.id.apellido_text);
         TextView escuela_text = (TextView)findViewById(R.id.escuela_text);
+        TextView carrera_text = (TextView) findViewById(R.id.carrera_text);
 
         String email = editTextCorreo.getText().toString();
         String patron = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -87,6 +100,8 @@ public class Nuevo extends AppCompatActivity {
 
         String escuela = editTextEscuela.getText().toString();
 
+        String carrera = spinner_carreras.getSelectedItem().toString();
+
         if(email.matches(patron) && email.length() > 0) { correo_validado = true; correo_text.setVisibility(View.INVISIBLE); } else { correo_text.setVisibility(View.VISIBLE); }
 
         if(password.length() > 6) { password_validado = true; password_text.setVisibility(View.INVISIBLE); } else { password_text.setVisibility(View.VISIBLE); }
@@ -97,12 +112,15 @@ public class Nuevo extends AppCompatActivity {
 
         if(escuela.length() != 0) { escuela_validado = true; escuela_text.setVisibility(View.INVISIBLE); } else { escuela_text.setVisibility(View.VISIBLE); }
 
-        if((correo_validado && password_validado && nombre_validado && apellido_validado && escuela_validado) == true) {
+        if(spinner_carreras.getSelectedItem().toString().equals("Seleccionar Opción")) { carrera_text.setVisibility(View.VISIBLE); } else { spinner_validado = true; carrera_text.setVisibility(View.INVISIBLE); }
+
+        if((correo_validado && password_validado && nombre_validado && apellido_validado && escuela_validado && spinner_validado) == true) {
             Map<String, Object> datos = new HashMap<>();
             datos.put("apellido", apellido);
             datos.put("correo", email);
             datos.put("escuela", escuela);
             datos.put("nombre", nombre);
+            datos.put("carrera", carrera);
             datos.put("imagenURL", "default");
 
             createAccount(email, password,datos);
@@ -148,6 +166,7 @@ public class Nuevo extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(Nuevo.this, "Favor de confirmar correo electrónico",
                                                         Toast.LENGTH_SHORT).show();
+                                                finish();
                                             }
                                         }
                                     });
@@ -161,6 +180,16 @@ public class Nuevo extends AppCompatActivity {
 
                     }
                 });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
