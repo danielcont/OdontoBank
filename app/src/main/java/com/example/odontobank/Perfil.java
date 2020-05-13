@@ -71,6 +71,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
         back_button = findViewById(R.id.pBackButton);
         back_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                Intent intent = new Intent(Perfil.this, Inicio.class);
+                startActivity(intent);
                 finish();
             }
         });
