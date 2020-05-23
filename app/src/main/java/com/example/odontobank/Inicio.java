@@ -82,17 +82,14 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
             case R.id.agregar:
                 Intent intentPublicar = new Intent(Inicio.this, Publicar.class);
                 startActivity(intentPublicar);
-                finish();
                 break;
             case R.id.profile:
                 Intent intent = new Intent(Inicio.this, Perfil.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.my_activities:
                 Intent intent_myActivities = new Intent(Inicio.this, MisPublicaciones.class);
                 startActivity(intent_myActivities);
-                finish();
                 break;
             case R.id.logout:
                 alerta();

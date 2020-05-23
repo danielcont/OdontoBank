@@ -175,6 +175,7 @@ public class Publicar extends AppCompatActivity implements AdapterView.OnItemSel
         Map<Object, String> datos = new HashMap<>();
         datos.put("uid", uid);
         datos.put("nombre", nombre.getText().toString());
+        datos.put("descripcion", descripcion.getText().toString());
         datos.put("contacto", contacto);
         datos.put("atencion_medica", atencion_medica);
         datos.put("longitud", longitud);
