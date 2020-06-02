@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Inicio"
-    tools:openDrawer="start"
+    tools:openDrawer="end"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.navigation.NavigationView
@@ -18,44 +18,102 @@
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/inicio_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/inicio_background">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/menu"
+            android:layout_width="32dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="22dp"
+            app:theme="@style/ToolBarStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="221dp"
+            android:layout_height="42dp"
+            android:fontFamily="@font/bold"
+            android:text="OdontoBank"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01999998" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="340dp"
+            android:layout_height="73dp"
+            android:fontFamily="@font/bold"
+            android:text="Solicitudes médicas para ti"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.123" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filtrar por:"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.025" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="361dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="3dp"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="2dp"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="180dp">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/menu"
-                android:layout_width="32dp"
-                android:layout_height="23dp"
-                android:layout_marginTop="22dp"
-                app:theme="@style/ToolBarStyle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/header"
-                android:layout_width="221dp"
-                android:layout_height="42dp"
-                android:fontFamily="@font/bold"
-                android:text="OdontoBank"
-                android:textColor="@color/white"
-                android:textSize="35dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.553"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_publicacionesInicio"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+            </androidx.recyclerview.widget.RecyclerView>
 
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

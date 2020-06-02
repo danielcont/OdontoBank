@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditarPublicacion">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="93dp"
+            android:fontFamily="@font/bold"
+            android:text="Modifica los campos que quieras editar"
+            android:textColor="@color/grey"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="430dp"
+            android:background="@drawable/profile_info_background">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/editPublisherFoto"
+                android:layout_margin="25dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/default_profile_picture"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#546b7d"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/thin"
+                android:text="Nombre:"
+                android:textColor="@color/red"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/nombrePublicadorEdit"
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/thin"
+                android:textColor="@color/grey"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/publisherCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="72dp"
+                android:fontFamily="@font/thin"
+                android:text="Correo:"
+                android:textColor="@color/red"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/editPublisherCorreo"
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/publisherCorreo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/thin"
+                android:textSize="15dp"
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:id="@+id/textView1011"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="125dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/thin"
+                android:textColor="@color/red"
+                android:text="Atención Médica:" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="121dp"
+                android:layout_toEndOf="@+id/textView1011"
+                android:theme="@style/Spinner"/>
+
+            <TextView
+                android:id="@+id/textView111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="152dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/thin"
+                android:textColor="@color/red"
+                android:text="Descripción:" />
+
+            <EditText
+                android:id="@+id/editPublisherDescripcion"
+                android:layout_width="315dp"
+                android:layout_height="121dp"
+                android:layout_below="@+id/textView111"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="15dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/grey"
+                android:background="@color/lightGrey"
+                android:inputType="textMultiLine"
+                android:maxLength="180"
+                android:maxLines="5"
+                android:hint="Escribir aquí..."/>
+
+            <TextView
+                android:id="@+id/textView1211"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="307dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/thin"
+                android:textColor="@color/red"
+                android:text="Número Celular (Opcional):" />
+
+            <EditText
+                android:id="@+id/editPublisherCelular"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="304dp"
+                android:layout_toEndOf="@+id/textView1211"
+                android:background="@drawable/input_phone"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="10"
+                android:hint="81-1316-9954" />
+
+            <Button
+                android:id="@+id/editPublishButton"
+                android:layout_width="130dp"
+                android:layout_height="38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/button"
+                android:fontFamily="@font/bold"
+                android:text="Modificar"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/editPublisherBackButton"
+                android:layout_width="130dp"
+                android:layout_height="38dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/button2"
+                android:fontFamily="@font/bold"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/grey"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

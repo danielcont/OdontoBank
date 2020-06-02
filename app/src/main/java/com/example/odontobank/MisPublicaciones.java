@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -28,7 +27,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MisPublicaciones extends AppCompatActivity implements RecyclerViewAdapter.OnPublicacionListener {
 
@@ -40,7 +38,6 @@ public class MisPublicaciones extends AppCompatActivity implements RecyclerViewA
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private FirebaseUser fuser;
-    private DocumentReference usuRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +69,7 @@ public class MisPublicaciones extends AppCompatActivity implements RecyclerViewA
         final String id = fuser.getUid();
 
         db.collection("publicaciones")
-                .orderBy("uid", Query.Direction.ASCENDING)
+                .orderBy("ts", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -105,8 +102,11 @@ public class MisPublicaciones extends AppCompatActivity implements RecyclerViewA
                                         e.printStackTrace();
                                     }
 
+                                    String publicacionId = doc.getId();
+
                                     Publicacion publicacion = doc.toObject(Publicacion.class);
                                     publicacion.setCiudad(city);
+                                    publicacion.setpUid(publicacionId);
                                     mis_publicaciones.add(publicacion);
                                 }
                             }
@@ -125,6 +125,12 @@ public class MisPublicaciones extends AppCompatActivity implements RecyclerViewA
                     }
                 });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        agregarDatos();
     }
 
     @Override
