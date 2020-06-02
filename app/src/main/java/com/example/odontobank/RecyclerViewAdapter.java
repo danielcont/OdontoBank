@@ -36,7 +36,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.Publi
         if(arrayPublicacion.get(position).getAtencion_medica().equals("Endodoncia")) {
             imagenAtencion.setImageResource(R.drawable.endodoncia);
         } else if(arrayPublicacion.get(position).getAtencion_medica().equals("Cirugía Oral")) {
-            imagenAtencion.setImageResource(R.drawable.cigugia_oral);
+            imagenAtencion.setImageResource(R.drawable.cirugia_oral);
         } else if(arrayPublicacion.get(position).getAtencion_medica().equals("Odontología Preventiva")) {
             imagenAtencion.setImageResource(R.drawable.odontologia_preventiva);
         } else if(arrayPublicacion.get(position).getAtencion_medica().equals("Periodoncia")) {
@@ -128,34 +128,43 @@ class Publicacion implements Parcelable {
         }
     };
     String uid;
+    String pUid;
     String nombre;
     String atencion_medica;
+    String descripcion;
     String contacto;
     String latitud;
     String longitud;
     String activado;
     String ciudad;
+    String fecha;
 
     protected Publicacion(Parcel in) {
         uid = in.readString();
+        pUid = in.readString();
         nombre = in.readString();
         atencion_medica = in.readString();
+        descripcion = in.readString();
         contacto = in.readString();
         latitud = in.readString();
         longitud = in.readString();
         activado = in.readString();
         ciudad = in.readString();
+        fecha = in.readString();
     }
 
-    public Publicacion(String uid, String nombre, String atencion_medica, String contacto, String latitud, String longitud, String activado, String ciudad) {
+    public Publicacion(String uid, String pUid, String nombre, String atencion_medica, String descripcion, String contacto, String latitud, String longitud, String activado, String ciudad, String fecha) {
         this.uid = uid;
+        this.pUid = pUid;
         this.nombre = nombre;
         this.atencion_medica = atencion_medica;
+        this.descripcion = descripcion;
         this.contacto = contacto;
         this.latitud = latitud;
         this.longitud = longitud;
         this.activado = activado;
         this.ciudad = ciudad;
+        this.fecha = fecha;
     }
 
     public Publicacion() {}
@@ -163,13 +172,16 @@ class Publicacion implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(uid);
+        dest.writeString(pUid);
         dest.writeString(nombre);
         dest.writeString(atencion_medica);
+        dest.writeString(descripcion);
         dest.writeString(contacto);
         dest.writeString(latitud);
         dest.writeString(longitud);
         dest.writeString(activado);
         dest.writeString(ciudad);
+        dest.writeString(fecha);
     }
 
     @Override
@@ -183,6 +195,14 @@ class Publicacion implements Parcelable {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getpUid() {
+        return pUid;
+    }
+
+    public void setpUid(String pUid) {
+        this.pUid = pUid;
     }
 
     public String getNombre() {
@@ -199,6 +219,14 @@ class Publicacion implements Parcelable {
 
     public void setAtencion_medica(String atencion_medica) {
         this.atencion_medica = atencion_medica;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getContacto() {
@@ -239,5 +267,13 @@ class Publicacion implements Parcelable {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

@@ -53,7 +53,7 @@ public class EditarActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfil();
+                finish();
             }
         });
 
@@ -134,7 +134,7 @@ public class EditarActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void aVoid) {
                     Log.d(TAG, "DocumentSnapshot successfully written!");
-                    perfil();
+                    finish();
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -147,10 +147,5 @@ public class EditarActivity extends AppCompatActivity {
         }
     }
 
-    private void perfil() {
-        finish();
-        Intent intent = new Intent(EditarActivity.this, Perfil.class);
-        startActivity(intent);
-    }
 
 }

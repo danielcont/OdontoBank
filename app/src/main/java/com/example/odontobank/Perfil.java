@@ -81,7 +81,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 Intent intent = new Intent(Perfil.this, EditarActivity.class);
                 startActivity(intent);
             }
@@ -97,6 +96,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ref = db.document("estudiantes/" + uid);
+        datos();
+    }
+
+     @Override
+     public void onResume() {
+         super.onResume();
+         datos();
+     }
+
+    private void datos() {
 
         ref.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -106,13 +115,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
                             String sCorreo = documentSnapshot.getString("correo");
                             username.setText(sCorreo);
 
-                            correo.append(sCorreo);
+                            correo.setText(sCorreo);
                             String sNombre = documentSnapshot.getString("nombre");
-                            nombre.append(sNombre);
+                            nombre.setText(sNombre);
                             String sApellido = documentSnapshot.getString("apellido");
-                            apellido.append(sApellido);
+                            apellido.setText(sApellido);
                             String sCarrera = documentSnapshot.getString("escuela");
-                            carrera.append(sCarrera);
+                            carrera.setText(sCarrera);
                         }
                     }
                 })
@@ -122,7 +131,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
                     }
                 });
-
     }
 
      public void handleImageClick(View view) {
