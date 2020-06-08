@@ -20,13 +20,22 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -40,15 +49,23 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    DocumentReference ref;
     private FirebaseUser fuser;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    Spinner filterSpin;
+    TextView aplicarButton;
 
     private List<Publicacion> publicaciones;
     private RecyclerView recyclerViewInicio;
     private Context contextInicio;
+    private double lat1, lon1, lat2,lon2;
+    String cc = "";
+
+    String[] arrayAtencion = {"", "Cirugía Oral", "Odontología Preventiva", "Periodoncia", "Terapéutica Dental",
+            "Endodoncia", "Prótesis Dental", "Odontología Infantil", "Dolor Orofacial", "Ortodoncia", "Cariología", "Implantología"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +77,27 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
 
         db = FirebaseFirestore.getInstance();
 
-        // Se pide la ubicación
-        ActivityCompat.requestPermissions(Inicio.this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION }, 123);
-
-        MyLocation g = new MyLocation(getApplicationContext());
-        Location l = g.getLocation();
-        if(l != null) {
-            double lat = l.getLatitude();
-            double lon = l.getLongitude();
-        }
-
         // Menú
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.menu);
+        filterSpin = findViewById(R.id.filterSpinner);
+        aplicarButton = findViewById(R.id.aplicar);
+
+        aplicarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datosInicio();
+            }
+        });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filterSpinner, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterSpin.setAdapter(adapter);
+        //filterSpin.setOnItemSelectedListener(this);
+
+        int spinnerPosition = adapter.getPosition("Default");
+        filterSpin.setSelection(spinnerPosition);
 
         setSupportActionBar(toolbar);
 
@@ -133,6 +157,16 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
     private void datosInicio() {
         final String id_ = fuser.getUid();
 
+        // Se pide la ubicación
+        ActivityCompat.requestPermissions(Inicio.this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION }, 123);
+
+        MyLocation g = new MyLocation(getApplicationContext());
+        Location l = g.getLocation();
+        if(l != null) {
+            lat1 = l.getLatitude();
+            lon1 = l.getLongitude();
+        }
+
         db.collection("publicaciones")
                 .orderBy("ts", Query.Direction.DESCENDING)
                 .get()
@@ -145,13 +179,15 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                             if(!doc.get("uid").equals(id_) && doc.get("activado").equals("1")) {
                                 // poner dato por dato a mis publicaciones
                                 // PENSAR COMO HACER EL SORT
-                                double lat = Double.parseDouble(doc.get("latitud").toString());
-                                double lon = Double.parseDouble(doc.get("longitud").toString());
+                                lat2 = Double.parseDouble(doc.get("latitud").toString());
+                                lon2 = Double.parseDouble(doc.get("longitud").toString());
                                 Geocoder geocoder = new Geocoder(Inicio.this);
                                 String city = "";
 
+                                double distancia = distanceBetween(lat1, lon1, lat2, lon2);
+
                                 try {
-                                    List<Address>addresses = geocoder.getFromLocation(lat, lon,1);
+                                    List<Address>addresses = geocoder.getFromLocation(lat2, lon2,1);
                                     if (geocoder.isPresent()) {
                                         if (addresses.size()>0) {
                                             Address returnAddress = addresses.get(0);
@@ -166,11 +202,57 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                                     e.printStackTrace();
                                 }
 
-                                Publicacion publicacionIni = doc.toObject(Publicacion.class);
-                                publicacionIni.setCiudad(city);
-                                publicaciones.add(publicacionIni);
+                                int[] especialidades = new int[4];
+                                cc = "";
+
+                                ref = db.document("estudiantes/" + id_);
+                                ref.get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if(documentSnapshot.exists()) {
+                                                    cc = documentSnapshot.getString("carrera");
+                                                }
+                                            }
+                                        });
+
+                                if (distancia <= 55000 && doc.get("atencion_medica").equals(filterSpin.getSelectedItem().toString())) {
+                                    Publicacion publicacionIni = doc.toObject(Publicacion.class);
+                                    publicacionIni.setCiudad(city);
+                                    publicaciones.add(publicacionIni);
+                                } else if(distancia <= 55000 && filterSpin.getSelectedItem().toString().equals("Default")) {
+                                    if (cc.equals("Lic. Cirujano Dentista")) {
+                                        especialidades = new int[]{1, 2, 8, 0};
+                                    } else if(cc.equals("Especialidad Endodoncia")) {
+                                        especialidades = new int[]{4, 5, 0, 0};
+                                    } else if(cc.equals("Especialidad Cirugía Oral y Maxilofacial")) {
+                                        especialidades = new int[]{1, 4, 8, 0};
+                                    } else if((cc.equals("Maestría Endodoncia"))) {
+                                        especialidades = new int[]{5, 7, 10, 0};
+                                    } else if((cc.equals("Maestría Periodoncia"))) {
+                                        especialidades = new int[]{3, 6, 11, 0};
+                                    } else if((cc.equals("Maestría Odontopediatría"))) {
+                                        especialidades = new int[]{7, 0, 0, 0};
+                                    } else if((cc.equals("Maestría en Ortodoncia"))) {
+                                        especialidades = new int[]{6, 9, 0, 0};
+                                    } else if((cc.equals("Maestría en Prostodoncia"))) {
+                                        especialidades = new int[]{6, 11, 0, 0};
+                                    } else if((cc.equals("Maestría en Odontología Avanzada"))) {
+                                        especialidades = new int[]{5, 7, 9, 0};
+                                    }
+
+                                    for(int i = 0; i <= especialidades.length; i ++) {
+                                        if(doc.get("atencion_medica").equals(arrayAtencion[i])) {
+                                            Publicacion publicacionIni = doc.toObject(Publicacion.class);
+                                            publicacionIni.setCiudad(city);
+                                            publicaciones.add(publicacionIni);
+                                        }
+                                    }
+                                }
+
                             }
                         }
+
                         RecyclerViewAdapter adapter = new RecyclerViewAdapter(
                                 publicaciones,
                                 Inicio.this
@@ -180,6 +262,23 @@ public class Inicio extends AppCompatActivity implements NavigationView.OnNaviga
                     }
                 });
 
+    }
+
+    private double distanceBetween(double lat1, double lon1, double lat2, double lon2) {
+        double distance;
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        distance = R * c * 1000; // convert to meters
+        distance = Math.pow(distance, 2);
+
+        return distance;
     }
 
     public void alerta() {

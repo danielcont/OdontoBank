@@ -78,10 +78,10 @@ public class Informacion extends AppCompatActivity {
             boolean bActivado;
             if(sActivado.equals("1")) {
                 bActivado = true;
-                activateButton.setText("Deslice para desactivar");
+                activateButton.setText(R.string.deactivate);
             } else {
                 bActivado = false;
-                activateButton.setText("Deslice para activar");
+                activateButton.setText(R.string.activate);
             }
             activateButton.setChecked(bActivado);
 
