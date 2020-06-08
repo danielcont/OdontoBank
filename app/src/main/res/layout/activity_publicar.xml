@@ -63,7 +63,7 @@
                 android:layout_marginStart="98dp"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/thin"
-                android:text="Nombre:"
+                android:text="@string/fname"
                 android:textColor="@color/red"
                 android:textSize="15dp" />
 
@@ -88,7 +88,7 @@
                 android:layout_marginStart="98dp"
                 android:layout_marginTop="72dp"
                 android:fontFamily="@font/thin"
-                android:text="Correo:"
+                android:text="@string/profileMail"
                 android:textColor="@color/red"
                 android:textSize="15dp" />
 
@@ -115,7 +115,7 @@
                 android:textSize="15dp"
                 android:fontFamily="@font/thin"
                 android:textColor="@color/red"
-                android:text="Atención Médica:" />
+                android:text="@string/medicalRequest" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -138,7 +138,7 @@
                 android:textSize="15dp"
                 android:fontFamily="@font/thin"
                 android:textColor="@color/red"
-                android:text="Descripción:" />
+                android:text="@string/description" />
 
             <EditText
                 android:id="@+id/descripcion"
@@ -155,7 +155,7 @@
                 android:inputType="textMultiLine"
                 android:maxLength="180"
                 android:maxLines="5"
-                android:hint="Escribir aquí..."/>
+                android:hint="@string/writeHere"/>
 
             <TextView
                 android:id="@+id/textView12"
@@ -168,7 +168,7 @@
                 android:textSize="15dp"
                 android:fontFamily="@font/thin"
                 android:textColor="@color/red"
-                android:text="Número Celular (Opcional):" />
+                android:text="@string/phoneOptional" />
 
             <EditText
                 android:id="@+id/celular"
@@ -194,7 +194,7 @@
                 android:layout_marginTop="363dp"
                 android:background="@drawable/button"
                 android:fontFamily="@font/bold"
-                android:text="Publicar"
+                android:text="@string/publish"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20dp" />

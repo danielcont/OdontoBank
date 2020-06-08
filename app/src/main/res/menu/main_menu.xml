@@ -7,19 +7,19 @@
             <item
                 android:id="@+id/news_feed"
                 android:icon="@drawable/newsfeed"
-                android:title="Últimas publicaciones" />
+                android:title="@string/neewsFeed" />
 
             <item
                 android:id="@+id/agregar"
                 android:icon="@drawable/agregar"
-                android:title="Crear una publicación" />
+                android:title="@string/request" />
 
         </group>
 
     </item>
 
 
-    <item android:title="Mi cuenta">
+    <item android:title="@string/myAccount">
 
         <menu>
             <group android:checkableBehavior="single">
@@ -27,17 +27,17 @@
                 <item
                     android:id="@+id/profile"
                     android:icon="@drawable/person"
-                    android:title="Perfil" />
+                    android:title="@string/profile" />
 
                 <item
                     android:id="@+id/my_activities"
                     android:icon="@drawable/my_activities"
-                    android:title="Mis publicaciones" />
+                    android:title="@string/myFeed" />
 
                 <item
                     android:id="@+id/logout"
                     android:icon="@drawable/logout"
-                    android:title="Salir" />
+                    android:title="@string/logout" />
 
             </group>
 

@@ -83,7 +83,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/regular"
-                    android:text="Mis publicaciones"
+                    android:text="@string/myFeed"
                     android:textColor="@color/white"
                     android:textSize="15sp"/>
             </RelativeLayout>
@@ -110,7 +110,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/regular"
-                    android:text="Crear publicación"
+                    android:text="@string/requestOther"
                     android:textColor="@color/white"
                     android:textSize="15sp"/>
 
@@ -139,7 +139,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="131dp"
                 android:fontFamily="@font/bold"
-                android:text="Información Personal"
+                android:text="@string/profileGreeting"
                 android:textColor="@color/grey"
                 android:textSize="30sp" />
 
@@ -215,7 +215,7 @@
                 android:layout_marginTop="33dp"
                 android:layout_marginEnd="45dp"
                 android:fontFamily="@font/bold"
-                android:text="Editar"
+                android:text="@string/editRequest"
                 android:textColor="@color/red"
                 android:textSize="15dp" />
 
@@ -228,7 +228,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="135dp"
                 android:fontFamily="@font/bold"
-                android:text="Nombre:"
+                android:text="@string/fname"
                 android:textColor="@color/grey"
                 android:textSize="17sp" />
 
@@ -241,7 +241,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="165dp"
                 android:fontFamily="@font/bold"
-                android:text="Apellido:"
+                android:text="@string/lname"
                 android:textColor="@color/grey"
                 android:textSize="17sp" />
 
@@ -256,7 +256,7 @@
                 android:textColor="@color/grey"
                 android:fontFamily="@font/bold"
                 android:textSize="17sp"
-                android:text="Escuela:" />
+                android:text="@string/college" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -266,10 +266,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="105dp"
-                android:text="Correo:"
+                android:fontFamily="@font/bold"
+                android:text="@string/profileMail"
                 android:textColor="@color/grey"
-                android:textSize="17sp"
-                android:fontFamily="@font/bold" />
+                android:textSize="17sp" />
 
 
         </RelativeLayout>
