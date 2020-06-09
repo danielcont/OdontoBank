@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OdontoBank</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="options">Options</string>
+    <string-array name="numbers">
+        <item>Options</item>
+        <item>Oral Surgery</item>
+        <item>Preventive Dentistry</item>
+        <item>Periodontics</item>
+        <item>Dental Therapeutics</item>
+        <item>Endodontics</item>
+        <item>Dental Prostheses</item>
+        <item>Children's Dentistry</item>
+        <item>Orofacial Ache</item>
+        <item>Orthodontics</item>
+        <item>Cariology</item>
+        <item>Implantology</item>
+    </string-array>
+
+    <string name="defaultOption">Default</string>
+    <string-array name="filterSpinner">
+        <item>Default</item>
+        <item>Oral Surgery</item>
+        <item>Preventive Dentistry</item>
+        <item>Periodontics</item>
+        <item>Dental Therapeutics</item>
+        <item>Endodontics</item>
+        <item>Dental Prostheses</item>
+        <item>Children's Dentistry</item>
+        <item>Orofacial Ache</item>
+        <item>Orthodontics</item>
+        <item>Cariology</item>
+        <item>Implantology</item>
+    </string-array>
+
+    <string-array name="carreras">
+        <item>Options</item>
+        <item>Dental Degree</item>
+        <item>Endodontic Residency</item>
+        <item>Maxillofacian Surgeon</item>
+        <item>Endodontic Master</item>
+        <item>Master in Periodontology</item>
+        <item>Master in Pediatric Dentistry</item>
+        <item>Master in Orthodontics</item>
+        <item>Master in Prosthodontics</item>
+        <item>PhD in Endodontics</item>
+    </string-array>
+
+    <string name="welcome">Welcome!</string>
+    <string name="greeting">Nice to see you again!</string>
+    <string name="login">Login</string>
+    <string name="newUser">Don\'t have an account?</string>
+    <string name="createAccount">Sign up.</string>
+
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="mail">E-mail</string>
+    <string name="college">College</string>
+    <string name="password">Password</string>
+    <string name="career">Course</string>
+    <string name="loginGreeting">Hello There!</string>
+    <string name="invalidMail">Invalid E-mail</string>
+    <string name="invalidPassword">Invalid Password</string>
+
+    <string name="signupGreeting">Fill the fields to create an account:</string>
+    <string name="minimumPassword">At Least 7 characters</string>
+    <string name="fillName">Field must be filled</string>
+    <string name="fillLast">Field must be filled</string>
+    <string name="fillCollege">Field must be filled</string>
+    <string name="fillCareer">Select an option</string>
+
+    <string name="mainGreeting">Medical requests for you</string>
+    <string name="orderBy">Order By:</string>
+    <string name="apply">Apply</string>
+
+    <string name="neewsFeed">News Feed</string>
+    <string name="request">Make a medical request</string>
+    <string name="myAccount">My account</string>
+    <string name="profile">Profile</string>
+    <string name="myFeed">My requests</string>
+    <string name="logout">Log out</string>
+
+    <string name="publishedBy">Published by:</string>
+    <string name="city">City:</string>
+    <string name="phone">Phone:</string>
+    <string name="description">Description:</string>
+    <string name="writeHere">Write here...</string>
+
+    <string name="editRequest">Edit</string>
+    <string name="activate">Swipe to activate</string>
+    <string name="deactivate">Swipe to deactivate</string>
+
+    <string name="requestOther">Make request:</string>
+    <string name="profileGreeting">Personal Info:</string>
+    <string name="profileMail">E-mail:</string>
+
+    <string name="publishGreeting">Fill the fields to make a medical request</string>
+    <string name="medicalRequest">Medical Request:</string>
+    <string name="phoneOptional">Phone Number (Optional):</string>
+    <string name="publish">Post</string>
+
+    <string name="myFeedGreeting">My medical requests</string>
+
+    <string name="editRequestGreeting">Re-write the data you want to edit</string>
+    <string name="editButton">Edit</string>
+    <string name="cancel">Go back</string>
+    <string name="namePublishing">Name:</string>
+
+    <string name="editInfo">Edit your personal info:</string>
+    <string name="not">The mail cannot be modified</string>
+
+</resources>

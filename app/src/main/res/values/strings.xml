@@ -1,115 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OdontoBank</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="options">Options</string>
-    <string-array name="numbers">
-        <item>Options</item>
-        <item>Oral Surgery</item>
-        <item>Preventive Dentistry</item>
-        <item>Periodontics</item>
-        <item>Dental Therapeutics</item>
-        <item>Endodontics</item>
-        <item>Dental Prostheses</item>
-        <item>Children's Dentistry</item>
-        <item>Orofacial Ache</item>
-        <item>Orthodontics</item>
-        <item>Cariology</item>
-        <item>Implantology</item>
-    </string-array>
+<string name="app_name">OdontoBank</string>
+    <string name="options">Seleccionar Opción</string>
+<string-array name="numbers">
+    <item>Seleccionar Opción</item>
+    <item>Cirugía Oral</item>
+    <item>Odontología Preventiva</item>
+    <item>Periodoncia</item>
+    <item>Terapéutica Dental</item>
+    <item>Endodoncia</item>
+    <item>Prótesis Dental</item>
+    <item>Odontología Infantil</item>
+    <item>Dolor Orofacial</item>
+    <item>Ortodoncia</item>
+    <item>Cariología</item>
+    <item>Implantología</item>
+</string-array>
+
+
 
     <string name="defaultOption">Default</string>
-    <string-array name="filterSpinner">
-        <item>Default</item>
-        <item>Oral Surgery</item>
-        <item>Preventive Dentistry</item>
-        <item>Periodontics</item>
-        <item>Dental Therapeutics</item>
-        <item>Endodontics</item>
-        <item>Dental Prostheses</item>
-        <item>Children's Dentistry</item>
-        <item>Orofacial Ache</item>
-        <item>Orthodontics</item>
-        <item>Cariology</item>
-        <item>Implantology</item>
-    </string-array>
+<string-array name="filterSpinner">
+    <item>Default</item>
+    <item>Cirugía Oral</item>
+    <item>Odontología Preventiva</item>
+    <item>Periodoncia</item>
+    <item>Terapéutica Dental</item>
+    <item>Endodoncia</item>
+    <item>Prótesis Dental</item>
+    <item>Odontología Infantil</item>
+    <item>Dolor Orofacial</item>
+    <item>Ortodoncia</item>
+    <item>Cariología</item>
+    <item>Implantología</item>
+</string-array>
 
-    <string-array name="carreras">
-        <item>Options</item>
-        <item>Dental Degree</item>
-        <item>Endodontic Residency</item>
-        <item>Maxillofacian Surgeon</item>
-        <item>Endodontic Master</item>
-        <item>Master in Periodontology</item>
-        <item>Master in Pediatric Dentistry</item>
-        <item>Master in Orthodontics</item>
-        <item>Master in Prosthodontics</item>
-        <item>PhD in Endodontics</item>
-    </string-array>
+<string-array name="carreras">
+    <item>Seleccionar Opción</item>
+    <item>Lic. Cirujano Dentista</item>
+    <item>Especialidad Endodoncia</item>
+    <item>Especialidad Cirugía Oral y Maxilofacial</item>
+    <item>Maestría Endodoncia</item>
+    <item>Maestría Periodoncia</item>
+    <item>Maestría Odontopediatría</item>
+    <item>Maestría en Ortodoncia</item>
+    <item>Maestría en Prostodoncia</item>
+    <item>Maestría en Odontología Avanzada</item>
+</string-array>
 
-    <string name="welcome">Welcome!</string>
-    <string name="greeting">Nice to see you again!</string>
-    <string name="login">Login</string>
-    <string name="newUser">Don\'t have an account?</string>
-    <string name="createAccount">Sign up.</string>
-    
-    <string name="fname">First Name</string>
-    <string name="lname">Last Name</string>
-    <string name="mail">E-mail</string>
-    <string name="college">College</string>
-    <string name="password">Password</string>
-    <string name="career">Course</string>
-    <string name="loginGreeting">Hello There!</string>
-    <string name="invalidMail">Invalid E-mail</string>
-    <string name="invalidPassword">Invalid Password</string>
 
-    <string name="signupGreeting">Fill the fields to create an account:</string>
-    <string name="minimumPassword">At Least 7 characters</string>
-    <string name="fillName">Field must be filled</string>
-    <string name="fillLast">Field must be filled</string>
-    <string name="fillCollege">Field must be filled</string>
-    <string name="fillCareer">Select an option</string>
 
-    <string name="mainGreeting">Medical requests for you</string>
-    <string name="orderBy">Order By:</string>
-    <string name="apply">Apply</string>
+<string name="welcome">¡Bienvenido!</string>
+<string name="greeting">¡Qué bueno que estás de regreso!</string>
+<string name="login">Ingresar</string>
+<string name="newUser">¿Aún no tienes cuenta?</string>
+<string name="createAccount">Registrar.</string>
 
-    <string name="neewsFeed">News Feed</string>
-    <string name="request">Make a medical request</string>
-    <string name="myAccount">My account</string>
-    <string name="profile">Profile</string>
-    <string name="myFeed">My requests</string>
-    <string name="logout">Log out</string>
+<string name="fname">Nombre</string>
+<string name="lname">Apellido</string>
+<string name="mail">Correo Electrónico</string>
+<string name="college">Escuela</string>
+<string name="password">Contraseña</string>
+<string name="career">Carrera</string>
+<string name="loginGreeting">¡Ingresa a tu cuenta!</string>
+<string name="invalidMail">Correo no válido</string>
+<string name="invalidPassword">Contraseña inválida</string>
 
-    <string name="publishedBy">Published by:</string>
-    <string name="city">City:</string>
-    <string name="phone">Phone:</string>
-    <string name="description">Description:</string>
-    <string name="writeHere">Write here...</string>
+<string name="signupGreeting">Llena los campos para crear una cuenta:</string>
+<string name="minimumPassword">Mínimo 7 caracteres</string>
+<string name="fillName">Favor de escribir nombre</string>
+<string name="fillLast">Favor de escribir apellido</string>
+<string name="fillCollege">Nombre de la Escuela</string>
+<string name="fillCareer">Favor de indicar qué estudia</string>
 
-    <string name="editRequest">Edit</string>
-    <string name="activate">Swipe to activate</string>
-    <string name="deactivate">Swipe to deactivate</string>
+<string name="mainGreeting">Solicitudes médicas para ti</string>
+<string name="orderBy">Filtrar por:</string>
+<string name="apply">Aplicar</string>
 
-    <string name="requestOther">Make request:</string>
-    <string name="profileGreeting">Personal Info:</string>
-    <string name="profileMail">E-mail:</string>
+<string name="neewsFeed">Últimas solicitues médicas</string>
+<string name="request">Hacer una solicitud médica</string>
+<string name="myAccount">Mi cuenta</string>
+<string name="profile">Perfil</string>
+<string name="myFeed">Mis solicitudes médicas</string>
+<string name="logout">Salir</string>
 
-    <string name="publishGreeting">Fill the fields to make a medical request</string>
-    <string name="medicalRequest">Medical Request:</string>
-    <string name="phoneOptional">Phone Number (Optional):</string>
-    <string name="publish">Post</string>
+<string name="publishedBy">Publicado por:</string>
+<string name="city">Ciudad:</string>
+<string name="phone">Celular:</string>
+<string name="description">Descripción:</string>
+<string name="writeHere">Escribe aquí...</string>
 
-    <string name="myFeedGreeting">My medical requests</string>
+<string name="editRequest">Editar</string>
+<string name="activate">Deslice para activar</string>
+<string name="deactivate">Deslice para desactivar</string>
 
-    <string name="editRequestGreeting">Re-write the data you want to edit</string>
-    <string name="editButton">Edit</string>
-    <string name="cancel">Go back</string>
-    <string name="namePublishing">Name:</string>
+<string name="requestOther">Crear publicación:</string>
+<string name="profileGreeting">Información Personal:</string>
+<string name="profileMail">Correo:</string>
 
-    <string name="editInfo">Edit your personal info:</string>
-    <string name="not">The mail cannot be modified</string>
+<string name="publishGreeting">Llena los campos para crear una publicación</string>
+<string name="medicalRequest">Solicitud Médica:</string>
+<string name="phoneOptional">Número Celular (Opcional):</string>
+<string name="publish">Publish</string>
+
+<string name="myFeedGreeting">Mis solicitudes médicas</string>
+
+<string name="editRequestGreeting">Modifica los campos que quieras editar</string>
+<string name="editButton">Editar</string>
+<string name="cancel">Modificar</string>
+<string name="namePublishing">Nombre:</string>
+
+<string name="editInfo">Edita tu información personal:</string>
+<string name="not">El correo no se puede modificar</string>
 
 </resources>
